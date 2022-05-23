@@ -1,0 +1,35 @@
+<div class='container'>
+    <form [formGroup]="submitForm" (ngSubmit)="onSubmit()">
+        <h3 class="heading-line">Today's Attendence for Overtime Workers</h3>
+
+        <div class="container">
+            <div class="table-responsive">
+                <table class="basic-table table-headers table table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Departmenbt</th>
+                            <th>Designation</th>
+                            <th>Present/Absent</th>
+                        </tr>
+                        <tr style="height: 1rem; border: none; box-shadow: none;"></tr>
+                    </thead>
+                    <tbody *ngFor="let emps of managers; let i = index">
+                        <tr *ngFor=" let sub_emps of emps.sub_emp_list">
+                            <td>{{sub_emps.emp_Id}}</td>
+                            <td>{{sub_emps.emp_Name}}</td>
+                            <td>{{emps. emp_dept}}</td>
+                            <td>{{sub_emps.emp_deg}}</td>
+                            <td><input type="checkbox" name="present" formControlName="checked" required />&nbsp;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="attendenceSubmit">
+            <button class="btn btn-primary">Submit Attendence</button>
+        </div>
+    </form>
+</div>

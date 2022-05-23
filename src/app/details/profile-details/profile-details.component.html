@@ -1,0 +1,65 @@
+<div class="container">
+
+    <div class="maintable" [hidden]="managerDisplay">
+        <table id="storeList" border="2" style="border-collapse: collapse; width:90%;margin:25px 30px 10px;">
+            <thead class="lists">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Designation</th>
+                    <th>Department</th>
+                    <th>Sub-Employees No.</th>
+                    <th>view</th>
+                </tr>
+            </thead>
+
+            <tbody class="table_body">
+                <tr *ngFor="let manager of managers">
+                    <td>{{manager.manager_Id}}</td>
+                    <td>{{manager.manager_Name}}</td>
+                    <td>{{manager.manager_deg}}</td>
+                    <td>{{manager.manager_dept}}</td>
+                    <td>{{manager.sub_emp}}</td>
+                    <td><button (click)="emplyoeeDetails(manager.manager_Id,manager.manager_Name)" [routerLink]="['/dashboard/', manager.manager_Id]">Details</button></td>
+                </tr>
+
+            </tbody>
+        </table>
+
+
+    </div>
+
+    <div [hidden]="employeeDisplay">
+        <h3 style="margin: 15px;">The details of Employees under are:-</h3>
+
+        <div class="detailstable">
+            <table id="storeList" border="2" style="border-collapse: collapse; width:90%;margin:25px 30px 10px;">
+                <thead class="lists">
+                    <tr>
+                        <th>Sr. No.</th>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Designation</th>
+                        <th>Salary</th>
+                    </tr>
+                </thead>
+
+                <tbody class="table_body">
+
+                    <tr *ngFor=" let sub_emps of subEmployeesList; let i = index">
+
+                        <td>{{i+1}}</td>
+                        <td>{{sub_emps.emp_Id}}</td>
+                        <td>{{sub_emps.emp_Name}}</td>
+                        <td>{{sub_emps.emp_deg}}</td>
+                        <td>{{sub_emps.emp_Salary}}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <button class="btn btn-primar back_button" (click)="managerDetails()">Back</button>
+    </div>
+
+</div>
